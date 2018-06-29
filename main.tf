@@ -16,3 +16,15 @@ module "network_host" {
   organization  = "Darnold-Hashicorp"
   resource_tags = "${var.resource_tags}"
 }
+
+output "hosts" {
+  value = "${module.network_host.hosts}"
+}
+
+output "sec_group" {
+  value = "${module.network_host.sec_group}"
+}
+
+output "instances" {
+  value = "${module.network_host.instances}"
+}

@@ -9,7 +9,7 @@ variable "resource_tags" {
 // Modules
 module "network_host" {
   source  = "app.terraform.io/Darnold-Hashicorp/network-host/aws"
-  version = "1.2.3"
+  version = "1.2.4"
 
   count         = 2
   network_ws    = "DemoNetwork-East"
@@ -27,4 +27,8 @@ output "sec_group" {
 
 output "instances" {
   value = "${module.network_host.instances}"
+}
+
+output "key_name" {
+  value = "${module.network_host.key_name}"
 }

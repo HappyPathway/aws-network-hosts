@@ -9,9 +9,9 @@ variable "resource_tags" {
 // Modules
 module "network_host" {
   source  = "app.terraform.io/Darnold-Hashicorp/network-host/aws"
-  version = "1.2.4"
+  version = "1.3.1"
 
-  count         = 2
+  count         = 1
   network_ws    = "DemoNetwork-East"
   organization  = "Darnold-Hashicorp"
   resource_tags = "${var.resource_tags}"

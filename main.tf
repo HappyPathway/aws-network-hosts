@@ -1,6 +1,9 @@
 //--------------------------------------------------------------------
 // Variables
-variable "resource_tags" {}
+variable "resource_tags" {
+  type        = "map"
+  description = "Resource Tags"
+}
 
 //--------------------------------------------------------------------
 // Modules

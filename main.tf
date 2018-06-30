@@ -5,13 +5,17 @@ variable "resource_tags" {
   description = "Resource Tags"
 }
 
+variable "count" {
+  default = 1
+}
+
 //--------------------------------------------------------------------
 // Modules
 module "network_host" {
-  source  = "app.terraform.io/Darnold-Hashicorp/network-host/aws"
-  version = "1.3.3"
-
-  count         = 1
+  source        = "app.terraform.io/Darnold-Hashicorp/network-host/aws"
+  version       = "1.3.5"
+  userdata      = "${file("${path.root}/userdata.sh")}"
+  count         = "${var.count}"
   network_ws    = "DemoNetwork-East"
   organization  = "Darnold-Hashicorp"
   resource_tags = "${var.resource_tags}"

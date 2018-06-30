@@ -9,12 +9,24 @@ variable "count" {
   default = 1
 }
 
+variable "vault_addr" {}
+variable "machine_role" {}
+
 //--------------------------------------------------------------------
 // Modules
+data "template_file" "init" {
+  template = "${file("${path.root}/userdata.sh")}"
+
+  vars {
+    vault_addr   = "${var.vault_addr}"
+    machine_role = "${var.machine_role}"
+  }
+}
+
 module "network_host" {
   source        = "app.terraform.io/Darnold-Hashicorp/network-host/aws"
   version       = "1.3.7"
-  user_data     = "${file("${path.root}/userdata.sh")}"
+  user_data     = "${template_file.init.rendered}"
   count         = "${var.count}"
   network_ws    = "DemoNetwork-East"
   organization  = "Darnold-Hashicorp"

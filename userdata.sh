@@ -9,7 +9,7 @@ export VAULT_ADDR=${vault_addr}
 export VAULT_TOKEN=${vault_token}
 vault read ssh-${machine_role}/config/ca > /etc/ssh/trusted-user-ca-keys.pem
 
-cat <<EOF > /tmp/sshd_config
+cat <<EOF > /etc/ssh/sshd_config
 Port 22
 Protocol 2
 HostKey /etc/ssh/ssh_host_rsa_key

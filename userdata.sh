@@ -7,7 +7,7 @@ unzip /tmp/vault.zip -d /usr/local/bin
 
 export VAULT_ADDR=${vault_addr}
 export VAULT_TOKEN=${vault_token}
-vault read ssh-${machine_role}/config/ca > /etc/ssh/trusted-user-ca-keys.pem
+vault read -field=public_key ssh-${machine_role}/config/ca > /etc/ssh/trusted-user-ca-keys.pem
 
 cat <<EOF > /etc/ssh/sshd_config
 Port 22

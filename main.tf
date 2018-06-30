@@ -11,28 +11,11 @@ variable "count" {
 
 variable "ssh_vault_token" {}
 
-variable "vault_token" {}
-
 variable "vault_addr" {}
 variable "machine_role" {}
 
 //--------------------------------------------------------------------
 // Modules
-
-provider "vault" {
-  token   = "${var.vault_token}"
-  address = "${var.vault_addr}"
-}
-
-data "vault_aws_access_credentials" "creds" {
-  backend = "${vault_aws_secret_backend.aws.path}"
-  role    = "${vault_aws_secret_backend_role.role.name}"
-}
-
-provider "aws" {
-  access_key = "${data.vault_aws_access_credentials.creds.access_key}"
-  secret_key = "${data.vault_aws_access_credentials.creds.secret_key}"
-}
 
 data "template_file" "init" {
   template = "${file("${path.root}/userdata.sh")}"

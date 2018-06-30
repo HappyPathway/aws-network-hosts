@@ -9,6 +9,8 @@ variable "count" {
   default = 1
 }
 
+variable "vault_token" {}
+
 variable "vault_addr" {}
 variable "machine_role" {}
 
@@ -19,6 +21,7 @@ data "template_file" "init" {
 
   vars {
     vault_addr   = "${var.vault_addr}"
+    vault_token  = "${var.vault_token}"
     machine_role = "${var.machine_role}"
   }
 }

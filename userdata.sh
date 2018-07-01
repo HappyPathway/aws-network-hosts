@@ -6,7 +6,10 @@ wget https://releases.hashicorp.com/vault/0.10.3/vault_0.10.3_linux_amd64.zip -O
 unzip /tmp/vault.zip -d /usr/local/bin
 
 export VAULT_ADDR=${vault_addr}
+echo "export VAULT_ADDR=${vault_addr}" >> /etc/profile.d/vault.sh
 export VAULT_TOKEN=${vault_token}
+echo "export VAULT_TOKEN=${vault_token}" >> /etc/profile.d/vault.sh
+
 vault read -field=public_key ssh-${machine_role}/config/ca > /etc/ssh/trusted-user-ca-keys.pem
 
 cat <<EOF > /etc/ssh/sshd_config

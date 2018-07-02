@@ -12,7 +12,7 @@ export VAULT_TOKEN=$${vault_token}
 echo "export VAULT_TOKEN=$${vault_token}" >> /etc/profile.d/vault.sh
 
 vault read -field=public_key ssh-${env}/config/ca > /etc/ssh/trusted-user-ca-keys.pem
-vault write -field=signed_key ssh-${dev}/sign/host cert_type=host public_key=@/etc/ssh/ssh_host_rsa_key.pub > /etc/ssh/ssh_host_rsa_key-cert.pub
+vault write -field=signed_key ssh-${env}/sign/host cert_type=host public_key=@/etc/ssh/ssh_host_rsa_key.pub > /etc/ssh/ssh_host_rsa_key-cert.pub
 chmod 0640 /etc/ssh/ssh_host_rsa_key-cert.pub
 
 cat <<EOF > /etc/ssh/sshd_config

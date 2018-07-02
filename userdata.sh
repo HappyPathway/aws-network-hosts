@@ -11,7 +11,7 @@ vault_token=$$(vault login -method=aws | grep -w token | awk '{ print $$NF }')
 export VAULT_TOKEN=$${vault_token}
 echo "export VAULT_TOKEN=$${vault_token}" >> /etc/profile.d/vault.sh
 
-vault read -field=public_key ssh-${machine_role}/config/ca > /etc/ssh/trusted-user-ca-keys.pem
+vault read -field=public_key ssh-${env}/config/ca > /etc/ssh/trusted-user-ca-keys.pem
 
 cat <<EOF > /etc/ssh/sshd_config
 Port 22

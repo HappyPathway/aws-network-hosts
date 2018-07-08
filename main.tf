@@ -10,6 +10,8 @@ variable "count" {
 }
 
 variable "vault_addr" {}
+
+variable "vault_token" {}
 variable "env" {}
 
 //--------------------------------------------------------------------
@@ -19,8 +21,9 @@ data "template_file" "init" {
   template = "${file("${path.root}/userdata.sh")}"
 
   vars {
-    vault_addr = "${var.vault_addr}"
-    env        = "${var.env}"
+    vault_addr  = "${var.vault_addr}"
+    vault_token = "${var.vault_token}"
+    env         = "${var.env}"
   }
 }
 

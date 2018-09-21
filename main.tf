@@ -28,7 +28,7 @@ data "template_file" "init" {
 }
 
 module "network_host" {
-  source        = "app.terraform.io/Darnold-Hashicorp/network-host/aws"
+  source        = "github.com/HappyPathway/terraform-aws-network-host"
   version       = "1.7.6"
   user_data     = "${data.template_file.init.rendered}"
   count         = "${var.count}"

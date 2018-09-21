@@ -50,3 +50,5 @@ TrustedUserCAKeys /etc/ssh/trusted-user-ca-keys.pem
 EOF
 
 service sshd restart
+
+# this is a comment

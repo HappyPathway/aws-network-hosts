@@ -17,6 +17,9 @@ variable "env" {}
 variable "tfe_org" {}
 variable "tfe_network_ws" {}
 
+variable "instance_type" {}
+variable "ssh_cidr" {}
+
 //--------------------------------------------------------------------
 // Modules
 
@@ -38,6 +41,8 @@ module "network_host" {
   network_ws    = "${var.tfe_network_ws}"
   organization  = "${var.tfe_org}"
   resource_tags = "${var.resource_tags}"
+  ssh_cidr = "${var.ssh_cidr}"
+  instance_type = "${var.instance_type}"
 }
 
 output "hosts" {

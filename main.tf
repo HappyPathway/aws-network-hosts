@@ -35,8 +35,8 @@ module "network_host" {
   version       = "1.7.6"
   user_data     = "${data.template_file.init.rendered}"
   count         = "${var.count}"
-  network_ws    = "${var.tfe_org}"
-  organization  = "${var.tfe_network_ws}"
+  network_ws    = "${var.tfe_network_ws}"
+  organization  = "${var.tfe_org}"
   resource_tags = "${var.resource_tags}"
 }
 

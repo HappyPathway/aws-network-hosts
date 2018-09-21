@@ -14,6 +14,9 @@ variable "vault_addr" {}
 variable "vault_token" {}
 variable "env" {}
 
+variable "tfe_org" {}
+variable "tfe_network_ws" {}
+
 //--------------------------------------------------------------------
 // Modules
 
@@ -32,8 +35,8 @@ module "network_host" {
   version       = "1.7.6"
   user_data     = "${data.template_file.init.rendered}"
   count         = "${var.count}"
-  network_ws    = "DemoNetwork-East"
-  organization  = "Darnold-Hashicorp"
+  network_ws    = "${var.tfe_org}"
+  organization  = "${var.tfe_network_ws}"
   resource_tags = "${var.resource_tags}"
 }
 

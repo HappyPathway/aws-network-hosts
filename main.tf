@@ -23,6 +23,7 @@ variable "private_intances" {
 variable "ssh_cidr" {
   default = "0.0.0.0/0"
 }
+variable "instance_type" {}
 
 //--------------------------------------------------------------------
 // Modules
@@ -43,8 +44,8 @@ module "network_host" {
   user_data     = "${data.template_file.init.rendered}"
   public_instances = "${var.public_instances}"
   private_instances = "${var.private_instances}"
-  network_ws    = "${var.tfe_network_ws}"
-  organization  = "${var.tfe_org}"
+  network_ws    = "${var.network_ws}"
+  organization  = "${var.organization}"
   resource_tags = "${var.resource_tags}"
   ssh_cidr = "${var.ssh_cidr}"
   instance_type = "${var.instance_type}"

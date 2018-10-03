@@ -17,9 +17,15 @@ variable "network_ws" {}
 variable "public_instances" {
   default = 0
 }
+
 variable "private_intances" {
   default = 0
 }
+
+variable "private_instances" {
+  default = 0
+}
+
 variable "ssh_cidr" {
   default = "0.0.0.0/0"
 }

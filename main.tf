@@ -44,7 +44,7 @@ data "template_file" "init" {
 
 module "network_host" {
   source        = "github.com/HappyPathway/terraform-aws-network-host"
-  version       = "1.7.6"
+  version       = "2.0.0"
   user_data     = "${data.template_file.init.rendered}"
   public_instances = "${var.public_instances}"
   private_instances = "${var.private_instances}"

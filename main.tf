@@ -5,20 +5,24 @@ variable "resource_tags" {
   description = "Resource Tags"
 }
 
-variable "count" {
-  default = 1
-}
-
 variable "vault_addr" {}
 
 variable "vault_token" {}
-variable "env" {}
+variable "env" {
+  default = "darnold"
+}
 
-variable "tfe_org" {}
-variable "tfe_network_ws" {}
-
-variable "instance_type" {}
-variable "ssh_cidr" {}
+variable "organization" {}
+variable "network_ws" {}
+variable "public_instances" {
+  default = 0
+}
+variable "private_intances" {
+  default = 0
+}
+variable "ssh_cidr" {
+  default = "0.0.0.0/0"
+}
 
 //--------------------------------------------------------------------
 // Modules
@@ -37,7 +41,8 @@ module "network_host" {
   source        = "github.com/HappyPathway/terraform-aws-network-host"
   version       = "1.7.6"
   user_data     = "${data.template_file.init.rendered}"
-  count         = "${var.count}"
+  public_instances = "${var.public_instances}"
+  private_instances = "${var.private_instances}"
   network_ws    = "${var.tfe_network_ws}"
   organization  = "${var.tfe_org}"
   resource_tags = "${var.resource_tags}"
@@ -45,16 +50,20 @@ module "network_host" {
   instance_type = "${var.instance_type}"
 }
 
-output "hosts" {
-  value = "${module.network_host.hosts}"
+output "public_hosts" {
+  value = "${module.network_host.public_hosts}"
+}
+  
+output "private_hosts" {
+  value = "${module.network_host.private_hosts}"
 }
 
-output "sec_group" {
-  value = "${module.network_host.sec_group}"
+output "private_instances" {
+  value = "${module.network_host.private_instances}"
 }
-
-output "instances" {
-  value = "${module.network_host.instances}"
+  
+output "public_instances" {
+  value = "${module.network_host.public_instances}"
 }
 
 output "key_name" {

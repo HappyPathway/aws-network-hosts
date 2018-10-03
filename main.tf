@@ -8,9 +8,7 @@ variable "resource_tags" {
 variable "vault_addr" {}
 
 variable "vault_token" {}
-variable "env" {
-  default = "darnold"
-}
+variable "env" {}
 
 variable "organization" {}
 variable "network_ws" {}

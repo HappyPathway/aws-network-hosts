@@ -51,6 +51,10 @@ EOF
 
 service sshd restart
 
+public_ip=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
+jenkins_token=$(vault read -field=SimpleApp secret/credentials/jenkins)
+jenkins_url=$(vault read -field=server_url secret/credentials/jenkins)
+curl -XPOST ${jenkins_url}/job/SimpleAppAnsibleDeployment/buildWithParameters?token=${jenkins_token}&HOST=${public_ip}
 # this is a comment
 # another comment
 # yet another comment

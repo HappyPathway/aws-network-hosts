@@ -12,7 +12,6 @@ variable "vault_policies" {
 
 variable "vault_addr" {}
 
-variable "vault_token" {}
 variable "env" {}
 
 variable "organization" {}
@@ -42,7 +41,6 @@ data "template_file" "init" {
 
   vars {
     vault_addr  = "${var.vault_addr}"
-    vault_token = "${var.vault_token}"
     env         = "${var.env}"
   }
 }

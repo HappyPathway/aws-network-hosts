@@ -6,10 +6,9 @@ wget https://releases.hashicorp.com/vault/0.10.3/vault_0.10.3_linux_amd64.zip -O
 unzip /tmp/vault.zip -d /usr/local/bin
 
 export VAULT_ADDR=${vault_addr}
-export VAULT_TOKEN=${vault_token}
 echo "export VAULT_ADDR=${vault_addr}" >> /etc/profile.d/vault.sh
-echo "export VAULT_TOKEN=${vault_token}" >> /etc/profile.d/vault.sh
 
+vault login -method=aws
 vault read -field=public_key ssh-${env}/config/ca > /etc/ssh/trusted-user-ca-keys.pem
 vault write -field=signed_key ssh-${env}/sign/host cert_type=host public_key=@/etc/ssh/ssh_host_rsa_key.pub > /etc/ssh/ssh_host_rsa_key-cert.pub
 chmod 0640 /etc/ssh/ssh_host_rsa_key-cert.pub

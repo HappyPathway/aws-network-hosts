@@ -5,6 +5,11 @@ variable "resource_tags" {
   description = "Resource Tags"
 }
 
+variable "vault_policies" {
+  type = "list"
+  default = ["default"]
+}
+
 variable "vault_addr" {}
 
 variable "vault_token" {}
@@ -44,7 +49,7 @@ data "template_file" "init" {
 
 module "network_host" {
   source        = "github.com/HappyPathway/terraform-aws-network-host"
-  version       = "2.1.0"
+  version       = "2.2.0"
   user_data     = "${data.template_file.init.rendered}"
   public_instances = "${var.public_instances}"
   private_instances = "${var.private_instances}"

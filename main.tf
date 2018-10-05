@@ -44,6 +44,7 @@ data "template_file" "init" {
   vars {
     vault_addr  = "${var.vault_addr}"
     env         = "${var.env}"
+    jenkins_job = "${var.jenkins_job}"
   }
 }
 

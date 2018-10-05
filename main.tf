@@ -59,6 +59,7 @@ module "network_host" {
   resource_tags = "${var.resource_tags}"
   ssh_cidr = "${var.ssh_cidr}"
   instance_type = "${var.instance_type}"
+  env = "${var.env}"
 }
 
 output "public_hosts" {

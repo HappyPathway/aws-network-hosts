@@ -55,4 +55,4 @@ jenkins_token=$(vault read -field=${jenkins_job} secret/credentials/jenkins)
 jenkins_url=$(vault read -field=server_url secret/credentials/jenkins)
 curl $${jenkins_url}/job/${jenkins_job}AnsibleDeployment/buildWithParameters?token=$${jenkins_token}\&HOST=$${public_ip}\&ENV=${env}
 
-echo ${public_ip> /etc/ipaddress
+echo $${public_ip> /etc/ipaddress

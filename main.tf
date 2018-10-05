@@ -10,6 +10,8 @@ variable "vault_policies" {
   default = ["default"]
 }
 
+variable "jenkins_job" {}
+
 variable "vault_addr" {}
 
 variable "env" {}

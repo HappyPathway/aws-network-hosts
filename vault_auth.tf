@@ -11,7 +11,7 @@ data "terraform_remote_state" "network" {
 
 resource "vault_aws_auth_backend_role" "admin" {
   backend                        = "aws"
-  role                           = "${modul
+  role                           = "${module.network_host.role}"
   auth_type                      = "iam"
   bound_account_id               = "${data.aws_caller_identity.current.account_id}"
   bound_iam_role_arn             = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${module.network_host.role}"

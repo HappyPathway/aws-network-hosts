@@ -1,3 +1,4 @@
+# --
 data "aws_caller_identity" "current" {}
 
 data "terraform_remote_state" "network" {
@@ -17,7 +18,7 @@ resource "vault_aws_auth_backend_role" "admin" {
   bound_iam_instance_profile_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:instance-profile/${module.network_host.role}"
   inferred_entity_type           = "ec2_instance"
   inferred_aws_region            = "${data.terraform_remote_state.network.region}"
-  ttl                            = 60
-  max_ttl                        = 120
+  ttl                            = 240
+  max_ttl                        = 360
   policies                       = "${var.vault_policies}"
 }

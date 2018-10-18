@@ -2,7 +2,8 @@
 apt-get update -y
 apt-get install -y python-dev python-pip python-setuptools python wget unzip
 
-wget https://releases.hashicorp.com/vault/0.10.3/vault_0.10.3_linux_amd64.zip -O /tmp/vault.zip
+# wget https://releases.hashicorp.com/vault/0.10.3/vault_0.10.3_linux_amd64.zip -O /tmp/vault.zip
+wget https://releases.hashicorp.com/vault/0.11.3/vault_0.11.3_linux_amd64.zip  -O /tmp/vault.zip
 unzip /tmp/vault.zip -d /usr/local/bin
 
 export VAULT_ADDR=${vault_addr}

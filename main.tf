@@ -5,7 +5,7 @@ variable "resource_tags" {
   description = "Resource Tags"
 }
 
-variable "vault_policies" 
+variable "vault_policies" {}
 
 variable "jenkins_job" {}
 

@@ -23,11 +23,11 @@ variable "public_instances" {
 }
 
 variable "private_intances" {
-  default = 0
+  default = 2
 }
 
 variable "private_instances" {
-  default = 0
+  default = 2
 }
 
 variable "ssh_cidr" {
